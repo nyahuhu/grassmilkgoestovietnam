@@ -21,9 +21,8 @@
     .row { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
     .row label { width: 70px; }
     input[type="number"] { flex: 1; padding: 10px; font-size: 16px; }
-    .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
-    button { padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
-    button.primary { background: #4CAF50; color: white; }
+    .buttons { display: flex; gap: 10px; margin-top: 10px; }
+    button { flex: 1; padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
     button.secondary { background: #e0e0e0; }
     .meta { font-size: 14px; color: #555; margin-top: 12px; text-align: center; }
     .toggle { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 8px; }
@@ -42,8 +41,6 @@
     </div>
 
     <div class="buttons">
-      <button id="btn-sgd-vnd" class="primary">Convert SGD → VND</button>
-      <button id="btn-vnd-sgd" class="primary">Convert VND → SGD</button>
       <button id="btn-clear" class="secondary">Clear</button>
       <button id="btn-swap" class="secondary">Swap Values</button>
     </div>
@@ -75,13 +72,11 @@
         if (direction === 'sgd_to_vnd') {
           const sgd = toNumber(sgdInput.value);
           if (isNaN(sgd)) { vndInput.value = ''; return; }
-          const v = Math.round(sgd * rate);
-          vndInput.value = String(v);
+          vndInput.value = Math.round(sgd * rate);
         } else if (direction === 'vnd_to_sgd') {
           const vnd = toNumber(vndInput.value);
           if (isNaN(vnd)) { sgdInput.value = ''; return; }
-          const s = vnd / rate;
-          sgdInput.value = s.toFixed(2);
+          sgdInput.value = (vnd / rate).toFixed(2);
         }
       }
 
@@ -98,8 +93,6 @@
       }
 
       // Buttons
-      document.getElementById('btn-sgd-vnd').addEventListener('click', () => convert('sgd_to_vnd'));
-      document.getElementById('btn-vnd-sgd').addEventListener('click', () => convert('vnd_to_sgd'));
       document.getElementById('btn-clear').addEventListener('click', clearFields);
       document.getElementById('btn-swap').addEventListener('click', swapValues);
 
@@ -112,8 +105,7 @@
       vndInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') convert('vnd_to_sgd'); });
 
       // Set rate text
-      const rateText = document.getElementById('rateText');
-      rateText.textContent = rate.toLocaleString('en-US');
+      document.getElementById('rateText').textContent = rate.toLocaleString('en-US');
 
       // Register service worker
       if ('serviceWorker' in navigator) {
