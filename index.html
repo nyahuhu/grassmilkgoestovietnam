@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SGD ↔ VND Converter</title>
+
+
+<!-- PWA manifest & theme -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#4CAF50">
+
+
+<!-- iOS support -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+
+
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; background: #fafafa; }
+.card { max-width: 480px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 12px; background: white; }
+h2 { text-align: center; margin-top: 0; }
+.row { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+.row label { width: 70px; }
+input[type="number"] { flex: 1; padding: 10px; font-size: 16px; }
+.buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+button { padding: 12px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
+button.primary { background: #4CAF50; color: white; }
+button.secondary { background: #e0e0e0; }
+.meta { font-size: 14px; color: #555; margin-top: 12px; text-align: center; }
+.toggle { display: flex; align-items: center; gap: 8px; justify-content: center; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div class="card">
+<h2>SGD ↔ VND Converter</h2>
+<div class="row">
+<label for="sgd">SGD</label>
+<input type="number" id="sgd" placeholder="Enter SGD" step="0.01" inputmode="decimal" />
+</div>
+<div class="row">
+<label for="vnd">VND</label>
+<input type="number" id="vnd" placeholder="Enter VND" step="1" inputmode="numeric" />
+</div>
+
+
+<div class="buttons">
+<button id="btn-sgd-vnd" class="primary">Convert SGD → VND</button>
+<button id="btn-vnd-sgd" class="primary">Convert VND → SGD</button>
+<button id="btn-clear" class="secondary">Clear</button>
+<button id="btn-swap" class="secondary">Swap Values</button>
+</div>
+
+
+<div class="toggle">
+<input type="checkbox" id="auto" checked />
+<label for="auto">Auto-convert while typing</label>
+</div>
+
+
+<div class="meta">Rate: 1 SGD = <strong id="rateText">20,620</strong> VND (fixed)</div>
+</html>
