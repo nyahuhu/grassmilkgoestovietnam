@@ -1,13 +1,13 @@
 {
-"short_name": "SGD↔VND",
-"name": "SGD VND Converter",
-"icons": [
-{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
-{ "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
-{ "src": "/icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
-],
-"start_url": ".",
-"display": "standalone",
-"background_color": "#ffffff",
-"theme_color": "#4CAF50"
+  "short_name": "SGD↔VND",
+  "name": "SGD VND Converter",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ],
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4CAF50"
 }
